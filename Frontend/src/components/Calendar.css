@@ -6,8 +6,8 @@ html, body, #root {
   }
   
   .calendar-container {
-    height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full viewport width */
+    height: 60vh; /* Full viewport height */
+    width: 60vw; /* Full viewport width */
     padding: 0; /* Remove padding */
     margin: 0; /* Remove margin */
   }
