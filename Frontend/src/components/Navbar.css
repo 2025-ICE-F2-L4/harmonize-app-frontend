@@ -9,6 +9,26 @@ body, html {
     font-family: sans-serif;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.logo-image {
+  width: 60%;
+  max-width: 200px;
+  height: auto;
+  margin: 10px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+
+
 .navbar{
     position: fixed;
     top: 0;
@@ -18,7 +38,7 @@ body, html {
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     padding-top: 20px;
     overflow: hidden;
     transition: width 0.3s ease;
@@ -29,29 +49,53 @@ body, html {
     width: 30vh;
 }
 
-.menu-item,
-.dashboard {
+.dashboard , .family{
+    margin-top: 20px;
+}
+
+.dashboard-title, .family-title{
+  color: #000000;
+  margin: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.navbar:hover .dashboard-title, .navbar:hover .family-title{
+  opacity: 1;
+}
+
+.menu-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin: 15px 0;
+  gap: 0px;
+  margin: 0 10px 0  10px;
   width: 100%;
   padding: 10px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: margin-left 0.3s ease;
 }
 
-.menu-item:hover,
-.dashboard:hover {
+.menu-item:not(:hover) {
   background-color: #f0f0f0;
+  margin-left: 10px;
 }
 
-.menu-item img,
-.dashboard img {
+.menu-item:hover {
+  background-color: #1cb0e0;
+  margin-left: 40px;
+}   
+
+.menu-item:hover  .label{
+  color: #ffffff;
+}
+
+.menu-item img
+ {
   width: 24px;
   height: 24px;
   margin-left: 10px;
 }
+
 
 
 .label {
@@ -59,16 +103,13 @@ body, html {
     margin-left: 10px;
     opacity: 0;
     transition: opacity 0.3s ease;
-    position: fixed;
-    padding: 5vh;
+    flex-grow: 1;
+    width: 15vh;
+    overflow: hidden;
 }
+
 
 .navbar:hover .label{
     opacity: 1;
 }
 
-.content{
-    margin-left: 10vh;
-    padding: 1em;
-    transition: margin-left 0.3s ease;
-}
