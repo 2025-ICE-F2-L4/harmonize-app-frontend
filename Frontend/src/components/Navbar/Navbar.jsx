@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import './Navbar.css';
-import ReactIcon from '../assets/react.svg';
-import HomeIcon from '../assets/icons/home-02-svgrepo-com.svg';
-import CalendarIcon from '../assets/icons/calendar.svg';
-import ActivitiesIcon from '../assets/icons/people-svgrepo-com.svg';
-import FullLogo from '../assets/logo/logo.png';
-import IconLogo from '../assets/logo/logo_icon.png';
+import ReactIcon from '../../assets/react.svg';
+import HomeIcon from '../../assets/icons/home-02-svgrepo-com.svg';
+import CalendarIcon from '../../assets/icons/calendar.svg';
+import ActivitiesIcon from '../../assets/icons/people-svgrepo-com.svg';
+import FullLogo from '../../assets/logo/logo.png';
+import IconLogo from '../../assets/logo/logo_icon.png';
 
 const Navbar = () => {
 
