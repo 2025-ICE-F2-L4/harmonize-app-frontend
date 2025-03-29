@@ -18,14 +18,16 @@ const Calendar = () => {
 
   return (
     <div className="calendar-container">
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        events={events}
-        dateClick={handleDateClick}
-        editable={true}
-        selectable={true}
-      />
+      <div className="calendar-inner">
+        <FullCalendar
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          events={events}
+          dateClick={handleDateClick}
+          editable={true}
+          selectable={true}
+        />
+      </div>
     </div>
   );
 };

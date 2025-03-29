@@ -1,14 +1,22 @@
 import React from 'react';
-// import { BrouseRouter as Router, Routes, Route } from 'react-router-dom';
-import Calendar from '../Calendar';
-import Navbar from '../Navbar/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from '../Layout/Layout';
+import Calendar from '../../pages/Calendar/Calendar';
+import Activities from '../../pages/Activities/Activities';
+import Home from '../../pages/Home/Home';
+
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-
-    </div>
+    <Router>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/calendar" element={<Calendar />} />     
+          <Route path="/activities" element={<Activities />} />     
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

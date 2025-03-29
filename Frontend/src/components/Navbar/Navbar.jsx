@@ -7,6 +7,7 @@ import CalendarIcon from '../../assets/icons/calendar.svg';
 import ActivitiesIcon from '../../assets/icons/people-svgrepo-com.svg';
 import FullLogo from '../../assets/logo/logo.png';
 import IconLogo from '../../assets/logo/logo_icon.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -23,15 +24,15 @@ const Navbar = () => {
                 <div className='dashboard-title'>Dashboard</div>
                 <div className="menu-item">
                     <img src={ HomeIcon } alt="home icon" />
-                    <div className="label">Home</div>
+                    <Link to="/" className="label">Home</Link>
                 </div>
                 <div className="menu-item">
                     <img src={ CalendarIcon } alt="calendar icon" />
-                    <div className="label">Calendar</div>
+                    <Link to="/calendar" className="label">Calendar</Link>
                 </div>
                 <div className="menu-item">
                     <img src={ ActivitiesIcon } alt="activities icon" />
-                    <div className="label">Activities</div>
+                    <Link to="/activities" className="label">Activities</Link>
                 </div>
             </div>
                 <div className="family">
