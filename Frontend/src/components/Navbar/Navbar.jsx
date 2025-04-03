@@ -5,6 +5,12 @@ import ReactIcon from '../../assets/react.svg';
 import HomeIcon from '../../assets/icons/home-02-svgrepo-com.svg';
 import CalendarIcon from '../../assets/icons/calendar.svg';
 import ActivitiesIcon from '../../assets/icons/people-svgrepo-com.svg';
+import MomIcon from '../../assets/icons/mom.svg';
+import DadIcon from '../../assets/icons/dad.svg';
+import DaughterIcon from '../../assets/icons/daughter.svg';
+import SonIcon from '../../assets/icons/son.svg';
+import GrandpaIcon from '../../assets/icons/grandpa.svg';
+import GrandmaIcon from '../../assets/icons/grandma.svg';
 import FullLogo from '../../assets/logo/logo.png';
 import IconLogo from '../../assets/logo/logo_icon.png';
 import { Link } from 'react-router-dom';
@@ -38,20 +44,28 @@ const Navbar = () => {
                 <div className="family">
                     <div className="family-title">Your family</div>
                     <div className="menu-item">
-                        <img src={ ActivitiesIcon } alt="family icon" />
+                        <img src={ MomIcon } alt="mom icon" />
                         <div className="label">Mom</div>
                     </div>
                     <div className="menu-item">
-                        <img src={ ActivitiesIcon } alt="family icon" />
+                        <img src={ DadIcon } alt="dad icon" />
                         <div className="label">Dad</div>
                     </div>
                     <div className="menu-item">
-                        <img src={ ActivitiesIcon } alt="family icon" />
+                        <img src={ DaughterIcon } alt="daughter icon" />
                         <div className="label">Alice</div>
                     </div>
                     <div className="menu-item">
-                        <img src={ ActivitiesIcon } alt="family icon" />
+                        <img src={ SonIcon } alt="son icon" />
                         <div className="label">Max</div>
+                    </div>
+                    <div className="menu-item">
+                        <img src={ GrandmaIcon } alt="grandma icon" />
+                        <div className="label">Grandma</div>
+                    </div>
+                    <div className="menu-item">
+                        <img src={ GrandpaIcon } alt="grandpa icon" />
+                        <div className="label">Grandpa</div>
                     </div>
                 </div>
         </div>
