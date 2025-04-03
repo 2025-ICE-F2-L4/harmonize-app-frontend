@@ -1,0 +1,37 @@
+/* Styl nagłówków dni */
+.fc .fc-daygrid-day-top {
+    background-color: #b9e9dd;
+    font-weight: bold;
+    padding: 4px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  
+
+
+  
+  /* Styl eventu */
+  .fc-event {
+    background-color: #e0f7fa !important;
+    color: #000 !important;
+    border: none !important;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 0.85em;
+  }
+  
+  .fc-event-title {
+    font-weight: 600;
+  }
+  
+  .fc-event-time {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 2px;
+  }
+  
+  .fc-event-people {
+    font-size: 0.75em;
+    color: #555;
+  }
+  

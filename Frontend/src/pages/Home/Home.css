@@ -1,0 +1,40 @@
+.home-calendar-wrapper {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    height: 50vh;
+}
+
+.fc .fc-col-header-cell {
+    background-color: #B9E9DD;
+    color: #000;
+    padding: 8px;
+    /* border-radius: 6px 6px 0 0; */
+    border: solid 1px rgb(82, 82, 82);
+    font-size: 0.9em;
+  }
+  
+
+
+
+  .fc-event-title {
+    font-weight: 600 !important;
+    font-size: 0.95em;
+  }
+  
+  .fc-event-time {
+    font-weight: bold;
+    font-size: 0.85em;
+  }
+  
+  .fc-event-main {
+    padding: 6px;
+    border-radius: 6px;
+    background-color: #E0F7FA !important;
+    border: none;
+    color: #000;
+  }
+  
+
+  
