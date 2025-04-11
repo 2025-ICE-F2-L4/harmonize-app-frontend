@@ -10,15 +10,16 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/calendar" element={<Calendar />} />     
-          <Route path="/activities" element={<Activities />} /> 
-          <Route path='/login' element={Login}/>    
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="calendar" element={<Calendar />} />
+          <Route path="activities" element={<Activities />} />
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     </Router>
   );
 }
+
 
 export default App;
