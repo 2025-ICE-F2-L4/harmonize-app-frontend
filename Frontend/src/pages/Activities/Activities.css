@@ -31,7 +31,7 @@
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    width: 1100px;
+    width: 1320px;
 }
 
 .activity-card
@@ -44,7 +44,8 @@
     height: 200px;  
     margin: 10px;
     padding: 10px;
-    background-color: #10c3d3;
+    border-radius: 8px;
+    background-color: #15e0f3e1;
 }
 
 .new-activity-card
@@ -52,14 +53,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 50px;
     width: 200px;
     height: 200px;  
     margin: 10px;
-    padding: 10px;
-    background-color: #10c3d3;
 
+}
+
+.new-activity-button
+{   
+    width: 220px;
+    height: 200px;
+    font-size: 60px;
+    background-color: #15e0f3e1;
 }
 
 .activity-image
@@ -67,6 +72,7 @@
     width: 100px;
     height: 100px;
     margin: 20px;
+    border-radius: 8px;
 }
 
 .activity-name      /* Name of the activity */

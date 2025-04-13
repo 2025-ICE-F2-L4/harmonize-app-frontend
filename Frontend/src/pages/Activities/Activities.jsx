@@ -37,28 +37,74 @@ const Activities = () => {
                         <img src={Picnic} alt="Picnic" className="activity-image" />
                         <p>Picnic</p>
                     </div>
+
                     <div className="activity-card">
-                        <img src={Picnic} alt="Picnic" className="activity-image" />
-                        <p>Picnic</p>
+                        <img src={Bike_trip} alt="Bike Trip" className="activity-image" />
+                        <p>Bike trip</p>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Board_games} alt="Board Games" className="activity-image" />
+                        <p>Board Games</p>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Diner} alt="Diner" className="activity-image" />
+                        <p>Diner</p>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Movie} alt="Movie" className="activity-image" />
+                        <p>Movie</p>
                     </div>
                     <div className="activity-card">
                         <img src={Picnic} alt="Picnic" className="activity-image" />
                         <p>Picnic</p>
                     </div>
+
                     <div className="activity-card">
-                        <img src={Picnic} alt="Picnic" className="activity-image" />
-                        <p>Picnic</p>
+                        <img src={Bike_trip} alt="Bike Trip" className="activity-image" />
+                        <p>Bike trip</p>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Board_games} alt="Board Games" className="activity-image" />
+                        <p>Board Games</p>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Diner} alt="Diner" className="activity-image" />
+                        <p>Diner</p>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Movie} alt="Movie" className="activity-image" />
+                        <p>Movie</p>
                     </div>
                     <div className="activity-card">
                         <img src={Picnic} alt="Picnic" className="activity-image" />
                         <p>Picnic</p>
                     </div>
+
+
+                    <div className="activity-card">
+                        <img src={Bike_trip} alt="Bike Trip" className="activity-image" />
+                        <p>Bike trip</p>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Board_games} alt="Board Games" className="activity-image" />
+                        <p>Board Games</p>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Diner} alt="Diner" className="activity-image" />
+                        <p>Diner</p>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Movie} alt="Movie" className="activity-image" />
+                        <p>Movie</p>
+                    </div>
                     <div className="activity-card">
                         <img src={Picnic} alt="Picnic" className="activity-image" />
                         <p>Picnic</p>
                     </div>
+
+
                     <div className="new-activity-card">
-                        <p>+</p>
+                        <button className='new-activity-button'> +</button>
                     </div>
                     {/* Add more activity cards as needed */}
                 </div>
