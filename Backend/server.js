@@ -4,12 +4,19 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User, Family, Activity, UserActivity } = require('./Schema');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://localhost:5174'], // Add all allowed origins
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Configuration
-const PORT = 3000;
+const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET;
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -45,6 +52,9 @@ const authenticate = async (req, res, next) => {
     res.status(401).json({ message: 'Not authorized' });
   }
 };
+
+// Handle preflight requests
+app.options('*', cors()); // Enable preflight for all routes
 
 // Signup (Registration) Endpoint
 app.post('/api/signup', async (req, res) => {
