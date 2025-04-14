@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './Login.css';
 import  Logo  from '../../assets/logo/logo.png';
 
+
+const API_BASE = 'http://localhost:5000';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,23 +13,33 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch(`${API_BASE}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', // Add this if using cookies/sessions
         body: JSON.stringify({ email, password }),
       });
 
-      if (response.ok) {
-        console.log('Login successful');
-      } else {
-        console.error('Login failed');
-      }
-    } catch (err) {
-      console.error('Error:', err);
+      const data = await response.json();
+    
+    if (response.ok) {
+      // Store the token (in localStorage or context)
+      localStorage.setItem('token', data.token);
+      // Store user data if needed
+      localStorage.setItem('user', JSON.stringify(data.user));
+      // Redirect to dashboard or home page
+      window.location.href = '/';
+    } else {
+      // Show error message to user
+      alert(data.message || 'Login failed');
     }
-  };
+  } catch (err) {
+    console.error('Error:', err);
+    alert('Network error. Please try again.');
+  }
+};
 
   return (
     <div className="login-page">
