@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import './Navbar.css';
-import ReactIcon from '../../assets/react.svg';
 import HomeIcon from '../../assets/icons/home-02-svgrepo-com.svg';
 import CalendarIcon from '../../assets/icons/calendar.svg';
 import ActivitiesIcon from '../../assets/icons/people-svgrepo-com.svg';
@@ -20,6 +19,9 @@ const Navbar = () => {
     const [isExpanded, setIsExpanded] = useState(false);
     const handleMouseEnter = () => setIsExpanded(true);
     const handleMouseLeave = () => setIsExpanded(false);
+
+
+
 
     return (
         <div className={`navbar ${isExpanded ? 'expanded' : ''}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
