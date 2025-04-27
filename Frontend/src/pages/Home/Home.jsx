@@ -15,7 +15,7 @@ const events = [
 
 
 
-  
+
 
     return (  
         <div className="home">
