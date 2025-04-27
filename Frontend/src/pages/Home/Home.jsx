@@ -2,6 +2,8 @@ import CalendarView from "../../components/CalendarView/CalendarView";
 import './Home.css';
 import { renderEventContent } from '../../utils/calendarUtils.jsx';
 
+import ProfilePictures from "../../components/ProfilePictures/ProfilePictures.jsx";
+
 const Home = () => {
 const events = [
     { title: 'Camping', date: '2025-04-01T09:00:00', extendedProps: { people: ['Mom', 'Dad', 'Max', 'Ashley'] } },
@@ -13,26 +15,25 @@ const events = [
     { title: 'Board Games', date: '2025-04-30T18:30:00', extendedProps: { people: ['Alice','Mom','Dad','Max'] } },
   ];
 
-
-
-
-
     return (  
-        <div className="home">
+        <><div className="home">
             <h2>Calendar</h2>
             <p>Current week</p>
-        <div className="home-calendar-wrapper">
-            <CalendarView
-            view="dayGridWeek"
-            height="auto"
-            headerToolbar={false} 
-            events={events}
-            eventContent={renderEventContent} 
-            />
-        </div>
 
+            <div className="home-calendar-wrapper">
+                <CalendarView
+                    view="dayGridWeek"
+                    height="auto"
+                    headerToolbar={false}
+                    events={events}
+                    eventContent={renderEventContent} />
+            </div>
 
-        </div>
+            {/* <div className="home-pictures">
+                <ProfilePictures/>
+            </div> */}
+
+        </div></>
     );
 }
  
