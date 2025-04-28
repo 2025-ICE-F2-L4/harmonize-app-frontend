@@ -4,24 +4,22 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background-color: #000000;
 }
 
 .activities-header
 {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     height: 20vh;
     width: 100%;
-    background-color: #0a1dee;
+    color: #000;
 }
 
 .activities-panel {
     /* display: flex; */
     justify-content: center;
-    background-color: #d31313b2;
+    background-color: #E0F7FA;
     border-radius: 10px;
     padding: 10px;
 }
@@ -45,7 +43,7 @@
     margin: 10px;
     padding: 10px;
     border-radius: 8px;
-    background-color: #15e0f3e1;
+    background-color: #79A8C3;
 }
 
 .new-activity-card
@@ -56,7 +54,6 @@
     width: 200px;
     height: 200px;  
     margin: 10px;
-
 }
 
 .new-activity-button
@@ -64,7 +61,9 @@
     width: 220px;
     height: 200px;
     font-size: 60px;
-    background-color: #15e0f3e1;
+    font-weight: 60;
+    color: #262733;
+    background-color: #79A8C3;
 }
 
 .activity-image
@@ -77,8 +76,8 @@
 
 .activity-name      /* Name of the activity */
 {
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
+    color: #262733;
+    font-size: 18px;
+    font-weight: 400;
     text-align: center;
 }
