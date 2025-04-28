@@ -3,7 +3,7 @@ import CalendarView from '../../components/CalendarView/CalendarView';
 import './Calendar.css';
 import { renderEventContent } from '../../utils/calendarUtils.jsx';
 
-
+ 
 const Calendar = () => {
 
 
