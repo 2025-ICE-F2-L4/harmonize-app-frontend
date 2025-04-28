@@ -12,7 +12,7 @@ const Activities = () => {
     return (  
         <div className="activities-page">
             <div className="activities-header">
-                <h1>Chose an activity</h1>
+                <h1>Choose an activity</h1>
             </div>
 
             <div className="activities-panel">
