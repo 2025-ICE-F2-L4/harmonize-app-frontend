@@ -3,7 +3,7 @@ import './Login.css';
 import  Logo  from '../../assets/logo/logo.png';
 
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = 'https://harmonize-app-backend.vercel.app/';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -11,35 +11,27 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch(`${API_BASE}/api/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include', // Add this if using cookies/sessions
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
     
-    if (response.ok) {
-      // Store the token (in localStorage or context)
-      localStorage.setItem('token', data.token);
-      // Store user data if needed
-      localStorage.setItem('user', JSON.stringify(data.user));
-      // Redirect to dashboard or home page
-      window.location.href = '/';
-    } else {
-      // Show error message to user
-      alert(data.message || 'Login failed');
+    try {
+      const response = await fetch('https://harmonize-app-backend.vercel.app/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Login failed');
+      }
+  
+      const data = await response.json();
+      // Handle successful login...
+      
+    } catch (error) {
+      console.error('Login error:', error);
+      // Display error to user
     }
-  } catch (err) {
-    console.error('Error:', err);
-    alert('Network error. Please try again.');
-  }
-};
+  };
 
   return (
     <div className="login-page">
