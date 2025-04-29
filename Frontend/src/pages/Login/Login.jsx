@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css';
 import  Logo  from '../../assets/logo/logo.png';
+import { useRouter } from 'next/router';
+const router = useRouter();
 
 
 const API_BASE = 'https://harmonize-app-backend.vercel.app/';
@@ -26,12 +28,14 @@ const Login = () => {
   
       const data = await response.json();
       // Handle successful login...
+      router.push('/dashboard');
       
     } catch (error) {
       console.error('Login error:', error);
       // Display error to user
     }
   };
+  
 
   return (
     <div className="login-page">
