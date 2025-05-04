@@ -1,47 +1,45 @@
 import React, { useState } from 'react';
 import './Login.css';
-import  Logo  from '../../assets/logo/logo.png';
-import { useRouter } from 'next/router';
-const router = useRouter();
-
+import Logo from '../../assets/logo/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const API_BASE = 'https://harmonize-app-backend.vercel.app/';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
-      const response = await fetch('https://harmonize-app-backend.vercel.app/api/auth/login', {
+      const response = await fetch(`${API_BASE}api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
-  
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Login failed');
       }
-  
+
       const data = await response.json();
       // Handle successful login...
-      router.push('/dashboard');
+      navigate('/dashboard');
       
     } catch (error) {
       console.error('Login error:', error);
       // Display error to user
     }
   };
-  
 
   return (
     <div className="login-page">
       <div className="login-panel">
         <div className="logo">
-          <img src= {Logo} alt="Logo" className="logo-image" />
+          <img src={Logo} alt="Logo" className="logo-image" />
         </div>
         <div className="login-container">
           <form onSubmit={handleSubmit} className="login-form">
@@ -62,8 +60,8 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className="buttons">
-              <button type="submit" className='login-button'> Login</button>
-              <button className='forgot-password-button'> Forgot password?</button>
+              <button type="submit" className='login-button'>Login</button>
+              <button className='forgot-password-button'>Forgot password?</button>
               <div className='separator'>
                 <span>New to Harmonize?</span>
               </div>

@@ -1,0 +1,530 @@
+﻿import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import './index.css';
+import App from './App/App.jsx';
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
+);
+import { Routes, Route } from 'react-router-dom';
+import Layout from '../Layout/Layout';
+import Calendar from '../../pages/Calendar/Calendar';
+import Activities from '../../pages/Activities/Activities';
+import Home from '../../pages/Home/Home';
+import Login from '../../pages/Login/Login';
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route index element={<Home />} />
+      <Route path="/calendar" element={<Calendar />} />
+      <Route path="/activities" element={<Activities />} />
+    </Routes>
+  );
+}
+
+export default App;
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import { renderEventContent } from '../../utils/calendarUtils.jsx';
+
+
+
+const CalendarView = ({ view = 'dayGridMonth', height = 'auto', headerToolbar=true,events=[],editable = false, eventContent}) => {
+
+    
+    return(
+        <FullCalendar
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        initialView={view}
+        headerToolbar = {headerToolbar ? {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        } : false}
+        height={height}
+        editable = {editable}
+        events = {events}
+        contentHeight="auto"
+        fixedWeekCount={false}
+        showNonCurrentDates={true}
+        eventContent={eventContent || renderEventContent}
+        />            
+    );
+}
+
+export default CalendarView;
+import { Outlet, useLocation } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
+import './Layout.css';
+import { useState } from 'react';
+
+const Layout = () => {
+    const location = useLocation();
+    const hideNavbar = location.pathname === '/login';
+  
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+
+    return (
+      <div className="layout">
+        {!hideNavbar && <Navbar />}
+
+        {!hideNavbar && (
+          <div className="top-bar">
+            <div className="user-menu">
+              <button onClick={toggleDropdown}> Menu â–Ľ </button>
+              {dropdownOpen && (
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/family">Family Panel</a></li>
+                  <li><a href="/login">Sign up</a></li>
+                  <li><a href="/logout">Log out</a></li>
+                </ul>
+              )}
+            </div>
+          </div>
+        )}
+
+        <main className={`layout-content ${hideNavbar ? 'no-navbar' : ''}`}>
+            <Outlet />
+        </main>
+      </div>
+    );
+  };
+  
+ 
+export default Layout;
+import React from 'react';
+import { useState } from 'react';
+import './Navbar.css';
+import HomeIcon from '../../assets/icons/home-02-svgrepo-com.svg';
+import CalendarIcon from '../../assets/icons/calendar.svg';
+import ActivitiesIcon from '../../assets/icons/people-svgrepo-com.svg';
+import MomIcon from '../../assets/icons/mom.svg';
+import DadIcon from '../../assets/icons/dad.svg';
+import DaughterIcon from '../../assets/icons/daughter.svg';
+import SonIcon from '../../assets/icons/son.svg';
+import GrandpaIcon from '../../assets/icons/grandpa.svg';
+import GrandmaIcon from '../../assets/icons/grandma.svg';
+import FullLogo from '../../assets/logo/logo.png';
+import IconLogo from '../../assets/logo/logo_icon.png';
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
+
+    const [isExpanded, setIsExpanded] = useState(false);
+    const handleMouseEnter = () => setIsExpanded(true);
+    const handleMouseLeave = () => setIsExpanded(false);
+
+
+
+
+    return (
+        <div className={`navbar ${isExpanded ? 'expanded' : ''}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <div className="logo">
+            <img src={isExpanded ? FullLogo : IconLogo} alt="Harmonize logo" className="logo-image" />
+            </div>
+            <div className="dashboard">
+                <div className='dashboard-title'>Dashboard</div>
+                <div className="menu-item">
+                    <img src={ HomeIcon } alt="home icon" />
+                    <Link to="/" className="label">Home</Link>
+                </div>
+                <div className="menu-item">
+                    <img src={ CalendarIcon } alt="calendar icon" />
+                    <Link to="/calendar" className="label">Calendar</Link>
+                </div>
+                <div className="menu-item">
+                    <img src={ ActivitiesIcon } alt="activities icon" />
+                    <Link to="/activities" className="label">Activities</Link>
+                </div>
+            </div>
+                <div className="family">
+                    <div className="family-title">Your family</div>
+                    <div className="menu-item">
+                        <img src={ MomIcon } alt="mom icon" />
+                        <div className="label">Mom</div>
+                    </div>
+                    <div className="menu-item">
+                        <img src={ DadIcon } alt="dad icon" />
+                        <div className="label">Dad</div>
+                    </div>
+                    <div className="menu-item">
+                        <img src={ DaughterIcon } alt="daughter icon" />
+                        <div className="label">Alice</div>
+                    </div>
+                    <div className="menu-item">
+                        <img src={ SonIcon } alt="son icon" />
+                        <div className="label">Max</div>
+                    </div>
+                    <div className="menu-item">
+                        <img src={ GrandmaIcon } alt="grandma icon" />
+                        <div className="label">Grandma</div>
+                    </div>
+                    <div className="menu-item">
+                        <img src={ GrandpaIcon } alt="grandpa icon" />
+                        <div className="label">Grandpa</div>
+                    </div>
+                </div>
+        </div>
+    );
+}
+ 
+export default Navbar
+import './ProfilePictures.css';
+import Mom from '../../assets/icons/mom.svg';
+import Dad from '../../assets/icons/dad.svg';
+
+const ProfilePictures = () => {
+
+    return (
+    <div className="characters">
+        <div className="character-box">
+            <img src={Dad} alt="Dad" className="character-image"/>
+        </div>
+            
+            
+            <div className="character-box">
+                <img src={Mom} alt="Mom" className="character-image"/>
+            </div>
+            
+    </div>
+    );
+}
+
+export default ProfilePictures;
+import React from 'react';
+import './Activities.css';
+
+import Bike_trip from '../../assets/activities/bike_trip.png';
+import Board_games from '../../assets/activities/board_games.png';
+import Diner from '../../assets/activities/diner.png';
+import Movie from '../../assets/activities/movie.png';
+import Picnic from '../../assets/activities/picnic.png';
+
+
+const Activities = () => {
+    return (  
+        <div className="activities-page">
+            <div className="activities-header">
+                <h1>Choose an activity</h1>
+            </div>
+
+            <div className="activities-panel">
+                <div className="activities-content">
+
+                    <div className="activity-card">
+                        <img src={Bike_trip} alt="Bike Trip" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Bike trip</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Board_games} alt="Board Games" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Board games</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Diner} alt="Diner" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Diner</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Movie} alt="Movie" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Movie</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Picnic} alt="Picnic" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Picnic</p>
+                        </div>
+                    </div>
+
+
+                    <div className="activity-card">
+                        <img src={Bike_trip} alt="Bike Trip" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Bike trip</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Board_games} alt="Board Games" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Board games</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Diner} alt="Diner" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Diner</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Movie} alt="Movie" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Movie</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Picnic} alt="Picnic" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Picnic</p>
+                        </div>
+                    </div>
+
+
+                    <div className="activity-card">
+                        <img src={Bike_trip} alt="Bike Trip" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Bike trip</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Board_games} alt="Board Games" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Board games</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Diner} alt="Diner" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Diner</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Movie} alt="Movie" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Movie</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Picnic} alt="Picnic" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Picnic</p>
+                        </div>
+                    </div>
+
+
+                    <div className="activity-card">
+                        <img src={Bike_trip} alt="Bike Trip" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Bike trip</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Board_games} alt="Board Games" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Board games</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Diner} alt="Diner" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Diner</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Movie} alt="Movie" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Movie</p>
+                        </div>
+                    </div>
+                    <div className="activity-card">
+                        <img src={Picnic} alt="Picnic" className="activity-image" />
+                        <div className="activity-name">
+                            <p>Picnic</p>
+                        </div>
+                    </div>
+
+
+                    <div className="new-activity-card">
+                        <button className='new-activity-button'> +</button>
+                    </div>
+                    {/* Add more activity cards as needed */}
+                </div>
+            </div>
+            
+        </div>
+    );
+}
+ 
+export default Activities;
+import React, { useState } from 'react';
+import CalendarView from '../../components/CalendarView/CalendarView';
+import './Calendar.css';
+import { renderEventContent } from '../../utils/calendarUtils.jsx';
+
+ 
+const Calendar = () => {
+
+
+  return (
+    <div className="calendar-full">
+      <CalendarView
+        view = "dayGridMonth"
+        height='90vh'
+        headerToolbar={true}
+        events={[
+          { title: 'Camping', date: '2025-04-01T09:00:00', extendedProps: { people: ['Mom', 'Dad', 'Max', 'Ashley'] } },
+          { title: 'Horse riding', date: '2025-04-04T13:30:00', extendedProps: { people: ['Alice'] } },
+          { title: 'Picnic', date: '2025-04-15T13:30:00', extendedProps: { people: ['Alice','Mom','Dad'] } },
+          { title: 'Date', date: '2025-04-17T13:30:00', extendedProps: { people: ['Dad', 'Mom'] } },
+          { title: 'Cinema', date: '2025-04-20T20:30:00', extendedProps: { people: ['Max','Alice'] } },
+          { title: 'Bike trip', date: '2025-04-25T11:00:00', extendedProps: { people: ['Mom','Alice'] } },
+          { title: 'Board Games', date: '2025-04-30T18:30:00', extendedProps: { people: ['Alice','Mom','Dad','Max'] } },
+        ]}
+        editable={true}
+        eventContent={ renderEventContent }
+        />
+    </div>
+  );
+};
+
+export default Calendar;
+import CalendarView from "../../components/CalendarView/CalendarView";
+import './Home.css';
+import { renderEventContent } from '../../utils/calendarUtils.jsx';
+
+import ProfilePictures from "../../components/ProfilePictures/ProfilePictures.jsx";
+
+const Home = () => {
+const events = [
+    { title: 'Camping', date: '2025-04-01T09:00:00', extendedProps: { people: ['Mom', 'Dad', 'Max', 'Ashley'] } },
+    { title: 'Horse riding', date: '2025-04-04T13:30:00', extendedProps: { people: ['Alice'] } },
+    { title: 'Picnic', date: '2025-04-15T13:30:00', extendedProps: { people: ['Alice','Mom','Dad'] } },
+    { title: 'Date', date: '2025-04-17T13:30:00', extendedProps: { people: ['Dad', 'Mom'] } },
+    { title: 'Cinema', date: '2025-04-20T20:30:00', extendedProps: { people: ['Max','Alice'] } },
+    { title: 'Bike trip', date: '2025-04-25T11:00:00', extendedProps: { people: ['Mom','Alice'] } },
+    { title: 'Board Games', date: '2025-04-30T18:30:00', extendedProps: { people: ['Alice','Mom','Dad','Max'] } },
+  ];
+
+    return (  
+        <><div className="home">
+            <h2>Calendar</h2>
+            <p>Current week</p>
+
+            <div className="home-calendar-wrapper">
+                <CalendarView
+                    view="dayGridWeek"
+                    height="auto"
+                    headerToolbar={false}
+                    events={events}
+                    eventContent={renderEventContent} />
+            </div>
+
+            {/* <div className="home-pictures">
+                <ProfilePictures/>
+            </div> */}
+
+        </div></>
+    );
+}
+ 
+export default Home;
+import React, { useState } from 'react';
+import './Login.css';
+import Logo from '../../assets/logo/logo.png';
+import { useNavigate } from 'react-router-dom';
+
+const API_BASE = 'https://harmonize-app-backend.vercel.app/';
+
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch(`${API_BASE}api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Login failed');
+      }
+
+      const data = await response.json();
+      // Handle successful login...
+      navigate('/dashboard');
+      
+    } catch (error) {
+      console.error('Login error:', error);
+      // Display error to user
+    }
+  };
+
+  return (
+    <div className="login-page">
+      <div className="login-panel">
+        <div className="logo">
+          <img src={Logo} alt="Logo" className="logo-image" />
+        </div>
+        <div className="login-container">
+          <form onSubmit={handleSubmit} className="login-form">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className="buttons">
+              <button type="submit" className='login-button'>Login</button>
+              <button className='forgot-password-button'>Forgot password?</button>
+              <div className='separator'>
+                <span>New to Harmonize?</span>
+              </div>
+              <button className='register-button'>Create account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
+export const renderEventContent = (eventInfo) => {
+    const people = eventInfo.event.extendedProps.people;
+  
+    return (
+      <div>
+        <strong>{eventInfo.timeText}</strong>
+        <div style={{ fontWeight: 600 }}>{eventInfo.event.title}</div>
+        {people && (
+          <div style={{ fontSize: '0.8em', color: '#555' }}>
+            {people.join(', ')}
+          </div>
+        )}
+      </div>
+    );
+  };
+  
