@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Login.css';
 import Logo from '../../assets/logo/logo.png';
 import { useNavigate } from 'react-router-dom';
+import Register from '../../components/Register/Register.jsx';
+
 
 const API_BASE = 'https://harmonize-app-backend.vercel.app/';
 
@@ -9,6 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,9 +68,12 @@ const Login = () => {
               <div className='separator'>
                 <span>New to Harmonize?</span>
               </div>
-          <button className='register-button'>Create account</button>
+              <button className='register-button' onClick={() => setIsRegisterOpen(true)}>
+                Create account
+              </button>
         </div>
       </div>
+      <Register isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)} />
     </div>
   );
 };

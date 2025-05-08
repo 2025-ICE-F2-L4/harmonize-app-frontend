@@ -1,0 +1,59 @@
+.popup-register {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px;
+    width: 25vw;
+    height: 60vh;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #ffffff69;
+  }
+  
+  .close-register {
+    margin-bottom: 10px;
+  }
+  
+  .close-button {
+    background-color: rgb(39, 39, 39);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+
+  .form-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+  
+  .register-form input {
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .submit-register {
+    padding: 10px;
+    border: none;
+    background-color: #35B189;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
