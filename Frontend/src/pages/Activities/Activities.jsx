@@ -147,7 +147,7 @@ const Activities = () => {
 
 
                     <div className="new-activity-card">
-                        <button className='new-activity-button'> +</button>
+                        <button className='new-activity-button'> + </button>
                     </div>
                     {/* Add more activity cards as needed */}
                 </div>
