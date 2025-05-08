@@ -59,15 +59,13 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="buttons">
               <button type="submit" className='login-button'>Login</button>
-              <button className='forgot-password-button'>Forgot password?</button>
+          </form>
+          <button className='forgot-password-button'>Forgot password?</button>
               <div className='separator'>
                 <span>New to Harmonize?</span>
               </div>
-              <button className='register-button'>Create account</button>
-            </div>
-          </form>
+          <button className='register-button'>Create account</button>
         </div>
       </div>
     </div>
