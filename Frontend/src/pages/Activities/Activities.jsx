@@ -12,11 +12,11 @@ const Activities = () => {
     return (  
         <div className="activities-page">
             <div className="activities-header">
-                    <h1>Chose an activity</h1>
-                </div>
+                <h1>Chose an activity</h1>
+            </div>
+
             <div className="activities-panel">
                 <div className="activities-content">
-
 
                     <div className="activity-card">
                         <img src={Bike_trip} alt="Bike Trip" className="activity-image" />
