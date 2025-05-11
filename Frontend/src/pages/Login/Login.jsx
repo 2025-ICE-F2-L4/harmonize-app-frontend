@@ -30,7 +30,7 @@ const Login = () => {
 
       const data = await response.json();
       // Handle successful login...
-      navigate('/dashboard');
+      navigate('/home');
       
     } catch (error) {
       console.error('Login error:', error);

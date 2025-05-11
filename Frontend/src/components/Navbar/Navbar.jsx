@@ -32,7 +32,7 @@ const Navbar = () => {
                 <div className='dashboard-title'>Dashboard</div>
                 <div className="menu-item">
                     <img src={ HomeIcon } alt="home icon" />
-                    <Link to="/" className="label">Home</Link>
+                    <Link to="/home" className="label">Home</Link>
                 </div>
                 <div className="menu-item">
                     <img src={ CalendarIcon } alt="calendar icon" />
