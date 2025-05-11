@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const Layout = () => {
     const location = useLocation();
-    const hideNavbar = location.pathname === '/login';
+    const hideNavbar = location.pathname === '/';
   
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
@@ -21,10 +21,9 @@ const Layout = () => {
               <button onClick={toggleDropdown}> Menu ▼ </button>
               {dropdownOpen && (
                 <ul>
-                  <li><a href="/">Home</a></li>
+                  <li><a href="/home">Home</a></li>
                   <li><a href="/family">Family Panel</a></li>
-                  <li><a href="/login">Sign up</a></li>
-                  <li><a href="/logout">Log out</a></li>
+                  <li><a href="/">Log out</a></li>
                 </ul>
               )}
             </div>

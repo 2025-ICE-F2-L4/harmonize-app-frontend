@@ -35,13 +35,15 @@ const Login = () => {
       }
   
       const data = await response.json();
+
       
       // Store user data and token
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       
       // Redirect to dashboard
-      navigate('/');
+      navigate('/home');
+
       
     } catch (error) {
       console.error('Login error:', error);

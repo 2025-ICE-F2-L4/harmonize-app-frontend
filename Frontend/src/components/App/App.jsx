@@ -9,11 +9,16 @@ import Login from '../../pages/Login/Login';
 function App() {
   return (
     <Routes>
+      // add condition to check if user is logged in
+      // if not, redirect to login page
+      <Route path="/" element={<Layout />} >
+        <Route path="/" element={<Login />} />
+      </Route>
+
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="calendar" element={<Calendar />} />
         <Route path="activities" element={<Activities />} />
-        <Route path="login" element={<Login />} />
       </Route>
     </Routes>
   );
