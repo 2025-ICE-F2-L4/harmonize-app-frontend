@@ -38,7 +38,7 @@
 
 ### 1️⃣ **Clone the Repository**  
 ```bash
-git clone https://github.com/2025-ICE-F2-L4/harmonize-app.git
+git clone https://github.com/2025-ICE-F2-L4/harmonize-app-frontend.git
 cd Harmonize
 ```
 
