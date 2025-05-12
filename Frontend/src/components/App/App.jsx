@@ -18,11 +18,23 @@ function App() {
       </Route>
 
       <Route path="/home" element={isAuthenticated() ? <Layout /> : <Navigate to="/" />}>
-        <Route index element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="calendar" element={<Calendar />} />
         <Route path="activities" element={<Activities />} />
       </Route>
     </Routes>
+
+    // <Routes>
+    //   <Route path="/" element={<Layout />} >
+    //     <Route path="/" element={<Login />} />
+    //   </Route>
+
+    //   <Route path="/" element={<Layout />}>
+    //     <Route path="home" element={<Home />} />
+    //     <Route path="calendar" element={<Calendar />} />
+    //     <Route path="activities" element={<Activities />} />
+    //   </Route> 
+    // </Routes>
   );
 }
 
