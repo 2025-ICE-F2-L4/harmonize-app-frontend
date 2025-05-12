@@ -4,8 +4,10 @@ import './Register.css';
 const API_BASE = 'https://harmonize-app-backend.vercel.app/';
 
 const Register = ( { isOpen, onClose, children } ) => {
+    const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [repassword, setRepassword] = useState('');
     const [message, setMessage] = useState('');    
     
     if (!isOpen) return null;
@@ -26,8 +28,10 @@ const Register = ( { isOpen, onClose, children } ) => {
           }
     
           setMessage("Account created successfully!");
+          setUserName('');
           setEmail('');
           setPassword('');
+          setRepassword('');
           setTimeout(onClose, 1500); // close popup after short delay
     
         } catch (error) {
@@ -45,22 +49,32 @@ const Register = ( { isOpen, onClose, children } ) => {
             </div>
             <div className="form-container">
                 <form className="register-form">
-                <input
-            type="email"
-            placeholder="Email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit" className="submit-register">Create Account</button>
-          {message && <p className="message">{message}</p>}
+                  <input
+                    type="userName"
+                    placeholder="User name"
+                    required
+                    value={userName}
+                    onChange={(e) => set(e.target.value)} />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)} />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
+                  <input
+                    type="password"
+                    placeholder="Repeat password"
+                    required
+                    value={repassword}
+                    onChange={(e) => setRepassword(e.target.value)} />
+                  <button type="submit" className="submit-register">Create Account</button>
+                  {message && <p className="message">{message}</p>}
                 </form>
             </div>
         </div>
