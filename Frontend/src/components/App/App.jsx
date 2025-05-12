@@ -12,16 +12,17 @@ const isAuthenticated = () => {
 
 function App() {
   return (
+ 
     <Routes>
       <Route path="/" element={<Layout />} >
-        <Route path="/" element={isAuthenticated() ? <Navigate to="/home" /> : <Login />} />
+        <Route path="/" element={<Login />} />
       </Route>
 
-      <Route path="/home" element={isAuthenticated() ? <Layout /> : <Navigate to="/" />}>
+      <Route path="/" element={<Layout />}>
         <Route path="home" element={<Home />} />
         <Route path="calendar" element={<Calendar />} />
         <Route path="activities" element={<Activities />} />
-      </Route>
+      </Route> 
     </Routes>
   );
 }
