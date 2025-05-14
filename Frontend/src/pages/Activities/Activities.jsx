@@ -1,6 +1,9 @@
 import React from 'react';
 import './Activities.css';
 
+import { useState } from 'react';
+import AddActivities from './AddActivities';
+
 import Boardgames from '../../assets/activities/boardgames.png';
 import Camp from '../../assets/activities/camp.png';
 import Cinema from '../../assets/activities/cinema.png';
@@ -18,7 +21,16 @@ import Walk from '../../assets/activities/walk.png';
 import Zoo from '../../assets/activities/zoo.png';
 
 
+
 const Activities = () => {
+
+    const [isOpen, setIsOpen]= useState(false);
+    const [customActivities, setCustomActivities] = useState([]);
+
+    const handleAddActivity = (newActivity) => {
+        setCustomActivities(prev => [...prev, newActivity]);
+    };
+
     return (  
         <div className="activities-page">
             <div className="activities-header">
@@ -121,14 +133,27 @@ const Activities = () => {
                         </div>
                     </div>
 
+                    {customActivities.map((activity, index) => (
+                      <div key={index} className="activity-card">
+                        <img src={activity.image} alt={activity.name} className="activity-image" />
+                            <div className="activity-name">
+                                <p>{activity.name}</p>
+                            </div>
+                        </div>
+                    ))}
+
 
                     <div className="new-activity-card">
-                        <button className='new-activity-button'> + </button>
+                        <button className='new-activity-button' onClick={()=> setIsOpen(true)}> + </button>
                     </div>
-
+                    
                 </div>
             </div>
-            
+             <AddActivities
+                        isOpen={isOpen}
+                        onClose={() => setIsOpen(false)}
+                        onAdd={handleAddActivity}
+                    />
         </div>
     );
 }
