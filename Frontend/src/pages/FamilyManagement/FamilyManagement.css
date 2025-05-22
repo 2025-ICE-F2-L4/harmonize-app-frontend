@@ -16,6 +16,16 @@
     box-shadow: 0px 0px 5px 0px #00000043;
 }
 
+.upgrade-member-button{
+    background-color: rgb(0, 204, 0);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.upgrade-member-button img{
+    width: 20px;
+    height: 20px;
+}
 .delete-member-button{
     background-color: rgb(216, 35, 35);
     padding: 5px;
@@ -26,6 +36,8 @@
     width: 20px;
     height: 20px;
 }
+
+
 ul li{
     margin-top: 20px;
 }
