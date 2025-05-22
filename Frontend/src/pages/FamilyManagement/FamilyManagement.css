@@ -26,6 +26,18 @@
     width: 20px;
     height: 20px;
 }
+
+.downgrade-member-button{
+    background-color: rgb(255, 204, 0);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.downgrade-member-button img{
+    width: 20px;
+    height: 20px;
+}
+
 .delete-member-button{
     background-color: rgb(216, 35, 35);
     padding: 5px;

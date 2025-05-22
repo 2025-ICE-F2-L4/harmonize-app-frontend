@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 import MakeAdmin from "../../assets/icons/upgrade.svg";
+import Downgrade from "../../assets/icons/down-arrow.svg";
 import KickOut from "../../assets/icons/kick-out.svg";
 
 import "./FamilyManagement.css";
@@ -26,8 +27,8 @@ const FamilyManagement = () => {
                 <h2>Family Members List</h2>
                 {/* This will be replaced with actual family members data */}
                 <ul>
-                    <li>John Doe - {familyrole} <button className="upgrade-member-button"><img src={ MakeAdmin }/> </button> <button className="delete-member-button">  <img src={KickOut}/> </button></li>
-                    <li>Jane Doe - {familyrole} <button className="upgrade-member-button"><img src={ MakeAdmin }/> </button> <button className="delete-member-button">  <img src={KickOut}/> </button></li>
+                    <li>John Doe - {familyrole} <button className="upgrade-member-button"><img src={ MakeAdmin }/> </button> <button className="downgrade-member-button"><img src={ Downgrade }/> </button> <button className="delete-member-button">  <img src={KickOut}/> </button></li>
+                    <li>Jane Doe - {familyrole} <button className="upgrade-member-button"><img src={ MakeAdmin }/> </button> <button className="downgrade-member-button"><img src={ Downgrade }/> </button> <button className="delete-member-button">  <img src={KickOut}/> </button></li>
                 </ul>
             </div>
         </div>
