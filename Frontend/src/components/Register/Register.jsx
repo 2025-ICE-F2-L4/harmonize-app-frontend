@@ -1,85 +1,96 @@
 import React, { useState } from "react";
-import './Register.css';
+import "./Register.css";
 
-const API_BASE = 'https://harmonize-app-backend.vercel.app/';
+const API_BASE = "https://harmonize-app-backend.vercel.app/";
 
-const Register = ( { isOpen, onClose, children } ) => {
-    const [userName, setUserName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [repassword, setRepassword] = useState('');
-    const [message, setMessage] = useState('');    
-    
-    if (!isOpen) return null;
+const Register = ({ isOpen, onClose }) => {
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repassword, setRepassword] = useState("");
+  const [message, setMessage] = useState("");
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        try {
-          const response = await fetch(`${API_BASE}api/auth/register`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-          });
-    
-          if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Registration failed');
-          }
-    
-          setMessage("Account created successfully!");
-          setUserName('');
-          setEmail('');
-          setPassword('');
-          setRepassword('');
-          setTimeout(onClose, 1500); // close popup after short delay
-    
-        } catch (error) {
-          setMessage(error.message);
-        }
-      };
-    
+  if (!isOpen) return null;
 
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    return(
-        <div className="popup-register">
-            <div className="close-register">
-                <button className="close-button" onClick={onClose}>X</button>
-            </div>
-            <div className="form-container">
-                <form className="register-form">
-                  <input
-                    type="userName"
-                    placeholder="User name"
-                    required
-                    value={userName}
-                    onChange={(e) => set(e.target.value)} />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)} />
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)} />
-                  <input
-                    type="password"
-                    placeholder="Repeat password"
-                    required
-                    value={repassword}
-                    onChange={(e) => setRepassword(e.target.value)} />
-                  <button type="submit" className="submit-register">Create Account</button>
-                  {message && <p className="message">{message}</p>}
-                </form>
-            </div>
-        </div>
-    )
+    // Add validation
+    if (password !== repassword) {
+      setMessage("Passwords don't match!");
+      return;
+    }
 
+    try {
+      const response = await fetch(`${API_BASE}api/auth/signup`, {
+        // Changed endpoint
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: userName, // Map to 'name' expected by backend
+          email,
+          password,
+          role: "Parent", // Add default role
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Registration failed");
+      }
+
+      setMessage("Account created successfully!");
+      setTimeout(onClose, 1500);
+    } catch (error) {
+      setMessage(error.message);
+    }
+  };
+
+  return (
+    <div className="popup-register">
+      <div className="popup-overlay" onClick={onClose}></div>
+      <div className="popup-content">
+        <button className="close-button" onClick={onClose}>
+          ×
+        </button>
+        <h2>Create Account</h2>
+        <form className="register-form" onSubmit={handleSubmit}>
+          <input
+            type="text" // Changed from "userName"
+            placeholder="Username"
+            required
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Repeat password"
+            required
+            value={repassword}
+            onChange={(e) => setRepassword(e.target.value)}
+          />
+          <button type="submit" className="submit-register">
+            Create Account
+          </button>
+          {message && <p className="message">{message}</p>}
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Register;
