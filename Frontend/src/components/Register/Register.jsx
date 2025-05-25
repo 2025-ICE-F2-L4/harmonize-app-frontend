@@ -8,6 +8,7 @@ const Register = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
+  const [role, setRole] = useState("Parent"); // New state for role, default to "Parent"
   const [message, setMessage] = useState("");
 
   if (!isOpen) return null;
@@ -23,14 +24,13 @@ const Register = ({ isOpen, onClose }) => {
 
     try {
       const response = await fetch(`${API_BASE}api/auth/signup`, {
-        // Changed endpoint
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: userName, // Map to 'name' expected by backend
+          name: userName,
           email,
           password,
-          role: "Parent", // Add default role
+          role, // Use the role from state
         }),
       });
 
@@ -40,6 +40,12 @@ const Register = ({ isOpen, onClose }) => {
       }
 
       setMessage("Account created successfully!");
+      // Optionally reset form fields
+      setUserName("");
+      setEmail("");
+      setPassword("");
+      setRepassword("");
+      setRole("Parent"); // Reset role to default
       setTimeout(onClose, 1500);
     } catch (error) {
       setMessage(error.message);
@@ -56,7 +62,7 @@ const Register = ({ isOpen, onClose }) => {
         <h2>Create Account</h2>
         <form className="register-form" onSubmit={handleSubmit}>
           <input
-            type="text" // Changed from "userName"
+            type="text"
             placeholder="Username"
             required
             value={userName}
@@ -83,6 +89,21 @@ const Register = ({ isOpen, onClose }) => {
             value={repassword}
             onChange={(e) => setRepassword(e.target.value)}
           />
+
+          {/* New Role Selection */}
+          <div className="role-selection">
+            <label htmlFor="role">I am a:</label>
+            <select
+              id="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="Parent">Parent</option>
+              <option value="Child">Child</option>
+            </select>
+          </div>
+
           <button type="submit" className="submit-register">
             Create Account
           </button>

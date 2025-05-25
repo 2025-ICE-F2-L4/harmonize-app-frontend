@@ -1,55 +1,267 @@
-:root{
-    color: #288D93;
+/* FamilyManagement.css */
+
+:root {
+  color: #288d93; /* Your root color */
 }
 
-.family-code-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 1%;
+/* General list item styling for family members */
+.family-member-item {
+  display: flex; /* Arranges items horizontally */
+  justify-content: space-between; /* Pushes content to left, buttons to right */
+  align-items: center; /* Vertically centers content */
+  padding: 10px 0; /* Adds vertical padding */
+  border-bottom: 1px solid #eee; /* Separator line */
+  margin-top: 10px; /* Reduces top margin from ul li to family-member-item */
+}
+
+.family-member-item:last-child {
+  border-bottom: none; /* No separator for the last item */
+}
+
+/* Container for the action buttons */
+.member-actions {
+  display: flex; /* Arranges buttons horizontally */
+  gap: 8px; /* Space between buttons */
+}
+
+/* General styling for all action buttons */
+.action-button {
+  background: none; /* Default to no background, specific colors below */
+  border: 1px solid #ccc; /* A subtle border for all buttons */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px; /* Internal padding */
+  cursor: pointer; /* Indicates interactivity */
+  display: flex; /* Use flex to center image inside button */
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.action-button:hover {
+  background-color: #f0f0f0; /* Light background on hover */
+  border-color: #a0a0a0; /* Darker border on hover */
+}
+
+/* Styling for the images (icons) inside the action buttons */
+.action-button img {
+  width: 24px; /* Set a consistent size for icons */
+  height: 24px;
+  display: block; /* Ensures no extra space below the image */
+}
+
+/* Specific background colors and hover effects for each button type */
+.make-admin-button {
+  background-color: rgb(0, 204, 0); /* Green for "Make Admin" */
+  border-color: rgb(0, 150, 0);
+}
+.make-admin-button:hover {
+  background-color: rgb(0, 230, 0);
+  border-color: rgb(0, 180, 0);
+}
+
+.downgrade-button {
+  background-color: rgb(255, 204, 0); /* Yellow/Orange for "Downgrade" */
+  border-color: rgb(200, 150, 0);
+}
+.downgrade-button:hover {
+  background-color: rgb(255, 230, 0);
+  border-color: rgb(230, 180, 0);
+}
+
+.kickout-button {
+  background-color: rgb(216, 35, 35); /* Red for "Kick Out" */
+  border-color: rgb(180, 20, 20);
+}
+.kickout-button:hover {
+  background-color: rgb(240, 50, 50);
+  border-color: rgb(200, 40, 40);
+}
+
+/* Existing styles below */
+.family-code-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1%;
 }
 
 .family-code {
-    margin-left: 1%;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px #00000043;
+  margin-left: 1%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px #00000043;
 }
 
-.upgrade-member-button{
-    background-color: rgb(0, 204, 0);
-    padding: 5px;
-    border-radius: 5px;
+/* Remove direct styling on ul li, use .family-member-item instead */
+ul li {
+  /* Removed margin-top: 20px; as it's now handled by .family-member-item */
+  list-style: none; /* Removes default bullet points if any */
 }
 
-.upgrade-member-button img{
-    width: 20px;
-    height: 20px;
+/* Add some general styles for the family management container */
+.family-management-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.downgrade-member-button{
-    background-color: rgb(255, 204, 0);
-    padding: 5px;
-    border-radius: 5px;
+.family-management-container h1,
+.family-management-container h2,
+.family-management-container h3 {
+  color: var(--color); /* Use your root color */
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-.downgrade-member-button img{
-    width: 20px;
-    height: 20px;
+.family-management-container p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
 }
 
-.delete-member-button{
-    background-color: rgb(216, 35, 35);
-    padding: 5px;
-    border-radius: 5px;
+.loading-message,
+.error-message,
+.action-message,
+.info-message {
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
-.delete-member-button img{
-    width: 20px;
-    height: 20px;
+.loading-message {
+  background-color: #e0f7fa;
+  color: #00796b;
 }
 
+.error-message {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
 
-ul li{
-    margin-top: 20px;
+.action-message {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+
+.no-family-section,
+.add-member-section,
+.members-list-section,
+.join-family-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+}
+
+.join-family-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.join-family-section label {
+  font-weight: bold;
+  color: #333;
+}
+
+.join-family-section input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80%;
+  max-width: 300px;
+  font-size: 1rem;
+}
+
+.join-family-section button[type="submit"] {
+  background-color: var(--color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.join-family-section button[type="submit"]:hover:not(:disabled) {
+  background-color: #206c70;
+}
+
+.join-family-section button[type="submit"]:disabled {
+  background-color: #a7d4d7;
+  cursor: not-allowed;
+}
+
+.family-code-container {
+  background-color: #e0f2f7;
+  border: 1px dashed var(--color);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
+  display: flex; /* Added flex to center items horizontally in container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.family-code {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color);
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-left: 10px; /* Space from "Your family code:" text */
+}
+
+.add-member-instructions {
+  font-style: italic;
+  color: #666;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.members-list-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.members-list-section li {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.members-list-section li:last-child {
+  margin-bottom: 0;
+}
+
+.members-list-section li span {
+  font-weight: bold;
+  color: #333;
+}
+
+.members-list-section li strong {
+  color: var(--color);
+  font-weight: normal; /* To make the bold less aggressive for role text */
+}
+
+.info-message {
+  color: #666;
+  font-style: italic;
 }
