@@ -9,6 +9,7 @@ const Register = ({ isOpen, onClose }) => {
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
   const [message, setMessage] = useState("");
+  const [role, setRole] = useState(""); // Default role
 
   if (!isOpen) return null;
 
@@ -30,7 +31,7 @@ const Register = ({ isOpen, onClose }) => {
           name: userName, // Map to 'name' expected by backend
           email,
           password,
-          role: "Parent", // Add default role
+          // role: "Parent", // Add default role
         }),
       });
 
@@ -83,6 +84,15 @@ const Register = ({ isOpen, onClose }) => {
             value={repassword}
             onChange={(e) => setRepassword(e.target.value)}
           />
+          <select
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            required
+          >
+            <option value="">Select role</option>
+            <option value="Parent">Parent</option>
+            <option value="Child">Child</option>
+          </select>
           <button type="submit" className="submit-register">
             Create Account
           </button>
