@@ -25,7 +25,7 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route path="calendar" element={<Calendar />} />
         <Route path="activities" element={<Activities />} />
-        <Route path="family" element = {<FamilyManagement/>}/>
+        <Route path="family" element = {<FamilyManagement />}/>
       </Route> 
     </Routes>
   );

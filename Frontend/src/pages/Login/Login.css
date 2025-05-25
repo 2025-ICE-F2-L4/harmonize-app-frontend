@@ -100,6 +100,7 @@ html, body {
 
   input{
     height: 4vh;
+    width: 100%;
     border-radius: 5px;
     margin-top: 2px;
     background-color: #F5F5F5;
