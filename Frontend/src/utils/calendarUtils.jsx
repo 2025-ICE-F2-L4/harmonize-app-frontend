@@ -1,16 +1,27 @@
 export const renderEventContent = (eventInfo) => {
-    const people = eventInfo.event.extendedProps.people;
-  
-    return (
+  const { title, extendedProps, timeText } = eventInfo.event;
+  const icon = extendedProps.icon;
+  const people = extendedProps.people || [];
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      {icon && (
+        <img
+          src={icon}
+          alt={title}
+          style={{ width: '16px', height: '16px', objectFit: 'contain' }}
+        />
+      )}
       <div>
-        <strong>{eventInfo.timeText}</strong>
-        <div style={{ fontWeight: 600 }}>{eventInfo.event.title}</div>
-        {people && (
-          <div style={{ fontSize: '0.8em', color: '#555' }}>
+        <div style={{ fontWeight: 600, fontSize: '0.85em' }}>
+          {timeText} {title}
+        </div>
+        {people.length > 0 && (
+          <div style={{ fontSize: '0.75em', color: '#555' }}>
             {people.join(', ')}
           </div>
         )}
       </div>
-    );
-  };
-  
+    </div>
+  );
+};
