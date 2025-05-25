@@ -4,7 +4,7 @@ import Logo from "../../assets/logo/logo.png"; // Ensure this path is correct fo
 import { useNavigate } from "react-router-dom";
 import Register from "../../components/Register/Register.jsx"; // Ensure this path is correct for your Register component
 
-// Your backend base URL 
+// Your backend base URL  
 const API_BASE = "https://harmonize-app-backend.vercel.app";
 
 const Login = () => {
