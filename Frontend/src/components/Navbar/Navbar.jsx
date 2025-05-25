@@ -43,7 +43,7 @@ const Navbar = () => {
                     <Link to="/activities" className="label">Activities</Link>
                 </div>
             </div>
-                <div className="family">
+                {/* <div className="family">
                     <div className="family-title">Your family</div>
                     <div className="menu-item">
                         <img src={ MomIcon } alt="mom icon" />
@@ -69,7 +69,7 @@ const Navbar = () => {
                         <img src={ GrandpaIcon } alt="grandpa icon" />
                         <div className="label">Grandpa</div>
                     </div>
-                </div>
+                </div> */}
         </div>
     );
 }
