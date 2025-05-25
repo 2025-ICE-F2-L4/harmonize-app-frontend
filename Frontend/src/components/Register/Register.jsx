@@ -31,7 +31,7 @@ const Register = ({ isOpen, onClose }) => {
           name: userName, // Map to 'name' expected by backend
           email,
           password,
-          // role: "Parent", // Add default role
+          role
         }),
       });
 
