@@ -10,7 +10,8 @@ import KickOut from "../../assets/icons/kick-out.svg";
 // Import the FamilyCreationForm component
 import FamilyCreationForm from "../../components/FamilyCreationForm";
 
-const API_BASE = "https://harmonize-app-backend.vercel.app"; // Your backend URL
+// const API_BASE = "https://harmonize-app-backend.vercel.app"; // Your backend URL
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const FamilyManagement = () => {
   const [familyData, setFamilyData] = useState(null); // Stores family name, code, and members

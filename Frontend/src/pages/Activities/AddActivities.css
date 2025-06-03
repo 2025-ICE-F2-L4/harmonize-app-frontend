@@ -1,74 +1,149 @@
-.popup {
-    position: fixed;
-    top: 30%;
-    left: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1000;
-
-    background-color: #35B189;
-    width: 50%;
-    height: 50%;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0  0 10px rgba(0, 0, 0, 0.5);
-    box-sizing: border-box;
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
 }
 
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: white;
+.modal-content {
+  position: relative; /* Required for .modal-close-button */
+  background-color: #ffffff;
+  width: 480px;
+  max-width: 90%;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.modal-close-button:hover {
+  color: #999;
 }
 
 form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-form input[type="text"] {
-    padding: 0.5rem;
-    font-size: 1rem;
-    width: 60%;
-    border-radius: 6px;
-    border: none;
+form input[type="text"],
+form input[type="datetime-local"],
+form textarea,
+form select {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+form button[type="submit"],
+.submit-button,
+.action-button {
+  padding: 0.5rem 1.4rem;
+  background-color: #35b189;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: center;
+}
+
+form button[type="submit"]:hover,
+.submit-button:hover,
+.action-button:hover {
+  background-color: #279c77;
 }
 
 .image-picker {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
 }
 
 .image-option {
-    width: 50px;
-    height: 50px;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    cursor: pointer;
-    object-fit: contain;
+  width: 50px;
+  height: 50px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  object-fit: contain;
+  transition: border-color 0.2s ease;
 }
 
 .image-option.selected {
-    border-color: #1cb0e0;
+  border-color: #1cb0e0;
 }
 
-form button[type="submit"] {
-    padding: 0.5rem 1.2rem;
-    background-color: #000;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+.selected-icon-preview {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* Calendar page Add Event button */
+.add-event-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.add-event-button {
+  padding: 0.4rem 1.2rem;
+  background-color: #000;
+  color: white;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-event-button:hover {
+  background-color: #444;
+}
+
+form select {
+  background-color: #fff;
+  color: #333;
+}
+
+form select option {
+  background-color: #fff;
+  color: #000;
 }

@@ -1,7 +1,8 @@
 // src/components/FamilyCreationForm.jsx (Recommended Location)
 import React, { useState } from "react";
 
-const API_BASE = "https://harmonize-app-backend.vercel.app"; // Your backend URL
+// const API_BASE = "https://harmonize-app-backend.vercel.app"; // Your backend URL
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const FamilyCreationForm = ({ onFamilyCreated }) => {
   const [familyName, setFamilyName] = useState("");

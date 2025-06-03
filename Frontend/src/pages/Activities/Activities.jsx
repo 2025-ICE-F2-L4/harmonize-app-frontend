@@ -21,7 +21,8 @@ import Swimming from "../../assets/activities/swimming.png";
 import Walk from "../../assets/activities/walk.png";
 import Zoo from "../../assets/activities/zoo.png";
 
-const API_BASE = "https://harmonize-app-backend.vercel.app";
+// const API_BASE = "https://harmonize-app-backend.vercel.app";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const Activities = () => {
   const [isOpen, setIsOpen] = useState(false);

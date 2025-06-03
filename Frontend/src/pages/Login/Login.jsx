@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import "./Login.css"; // Ensure this path is correct for your CSS
-import Logo from "../../assets/logo/logo.png"; // Ensure this path is correct for your logo
+import "./Login.css"; 
+import Logo from "../../assets/logo/logo.png"; 
 import { useNavigate } from "react-router-dom";
 import Register from "../../components/Register/Register.jsx"; // Ensure this path is correct for your Register component
 
 // Your backend base URL   
-const API_BASE = "https://harmonize-app-backend.vercel.app";
+// const API_BASE = "https://harmonize-app-backend.vercel.app";
+const API_BASE = import.meta.env.VITE_API_URL;
+
 
 const Login = () => {
   const [email, setEmail] = useState("");

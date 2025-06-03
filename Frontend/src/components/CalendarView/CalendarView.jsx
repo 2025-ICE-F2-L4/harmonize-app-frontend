@@ -47,7 +47,7 @@ const CalendarView = ({
           authHeaderValue.startsWith("Bearer ")
         );
 
-        const backendUrl = "https://harmonize-app-backend.vercel.app";
+        const backendUrl = import.meta.env.VITE_API_URL;
 
         console.log(
           "Attempting to fetch from:",
