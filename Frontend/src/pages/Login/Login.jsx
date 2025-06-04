@@ -9,7 +9,7 @@ import Register from "../../components/Register/Register.jsx"; // Ensure this pa
 const API_BASE = import.meta.env.VITE_API_URL;
 
 
-const Login = () => {
+const Login = () => { 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
