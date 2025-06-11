@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import "./Activities.css";
 import AddActivities from "./AddActivities"; // Make sure this path is correct
+import AddCustomActivities from "./AddCustomActivities";
+
 
 // Import your activity images
 import Boardgames from "../../assets/activities/boardgames.png";
@@ -23,6 +25,8 @@ import Zoo from "../../assets/activities/zoo.png";
 
 // const API_BASE = "https://harmonize-app-backend.vercel.app";
 const API_BASE = import.meta.env.VITE_API_URL;
+
+
 
 const Activities = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -102,6 +106,9 @@ const Activities = () => {
   if (userError) {
     return <div className="activities-page error-message">{userError}</div>;
   }
+
+
+  
 
   return (
     <div className="activities-page">
@@ -244,12 +251,12 @@ const Activities = () => {
           </div>
         </div>
       </div>
-      <AddActivities
+      <AddCustomActivities
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        onActivityAdded={handleActivityAdded}
-        loggedInUser={currentLoggedInUserData} // This prop should now be correct
+        onAdd={handleActivityAdded}
       />
+
     </div>
   );
 };
