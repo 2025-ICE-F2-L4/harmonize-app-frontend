@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./AddActivities.css"; // Assuming you have a CSS file for styling
 
+const API_BASE = import.meta.env.VITE_API_URL;
+
 const AddActivities = ({
   isOpen,
   onClose,
@@ -65,7 +67,7 @@ const AddActivities = ({
       }
 
       const response = await fetch(
-        "https://harmonize-app-backend.vercel.app/api/activities/create",
+        `${API_BASE}/api/activities/create`,
         {
           method: "POST",
           headers: {
